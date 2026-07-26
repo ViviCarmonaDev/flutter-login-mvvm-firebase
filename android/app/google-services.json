@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "658018357324",
+    "project_id": "androidloginmvvm",
+    "storage_bucket": "androidloginmvvm.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658018357324:android:62556611bed8674b7e64e9",
+        "android_client_info": {
+          "package_name": "com.vivicarmonadev.loginmvvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658018357324-7f9ujl55afojvuc2o5909l14lci0n397.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.vivicarmonadev.loginmvvm",
+            "certificate_hash": "ea906ec389c13257735161eb4ec0f156ffd01951"
+          }
+        },
+        {
+          "client_id": "658018357324-v9400263b6gohl38b4d40mjq6i9c25l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHWGEyGoKNgeK6kCkrHUY-Xe_wVJBB7c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658018357324-v9400263b6gohl38b4d40mjq6i9c25l5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:658018357324:android:13c34a9ecd30a17e7e64e9",
+        "android_client_info": {
+          "package_name": "com.vivicarmonadev.loginmvvmflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "658018357324-v9400263b6gohl38b4d40mjq6i9c25l5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHWGEyGoKNgeK6kCkrHUY-Xe_wVJBB7c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "658018357324-v9400263b6gohl38b4d40mjq6i9c25l5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
