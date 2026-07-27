@@ -1,7 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart' as firebase;
 import 'package:google_sign_in/google_sign_in.dart';
-
 import '../models/user_model.dart' as model;
 import 'auth_repository.dart';
 
@@ -10,13 +9,9 @@ import 'auth_repository.dart';
 
 class FirebaseAuthRepository implements AuthRepository {
   final firebase.FirebaseAuth _firebaseAuth;
-  final GoogleSignIn _googleSignIn;
 
-  FirebaseAuthRepository({
-    firebase.FirebaseAuth? firebaseAuth,
-    GoogleSignIn? googleSignIn,
-  })  : _firebaseAuth = firebaseAuth ?? firebase.FirebaseAuth.instance,
-        _googleSignIn = googleSignIn ?? GoogleSignIn();
+  FirebaseAuthRepository({firebase.FirebaseAuth? firebaseAuth,})
+      : _firebaseAuth = firebaseAuth ?? firebase.FirebaseAuth.instance;
 
   @override
   model.User? get currentUser {
@@ -62,16 +57,10 @@ class FirebaseAuthRepository implements AuthRepository {
   @override
   Future<model.User> signInWithGoogle() async {
     try {
-      final googleAccount = await _googleSignIn.signIn();
-      if (googleAccount == null) {
-        // El usuario cerró la ventana de selección de cuenta sin elegir ninguna.
-        throw Exception('Inicio de sesión con Google cancelado');
-      }
-
-      final googleAuth = await googleAccount.authentication;
+      final googleAccount = await GoogleSignIn.instance.authenticate();
+      final googleAuth = googleAccount.authentication;
       final credential = firebase.GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
-        accessToken: googleAuth.accessToken,
       );
 
       final result = await _firebaseAuth.signInWithCredential(credential);
@@ -82,13 +71,15 @@ class FirebaseAuthRepository implements AuthRepository {
       return _toDomainUser(firebaseUser);
     } on firebase.FirebaseAuthException catch (e) {
       throw Exception(_traducirError(e));
+    } catch (e) {
+      throw Exception('Inicio de sesión con Google cancelado');
     }
   }
 
   @override
   Future<void> signOut() async {
     await _firebaseAuth.signOut();
-    await _googleSignIn.signOut();
+    await GoogleSignIn.instance.signOut();
   }
 
   // Traduce las excepciones específicas de Firebase Auth a mensajes en español para el usuario final.
